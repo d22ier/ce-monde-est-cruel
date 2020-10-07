@@ -23,31 +23,24 @@ class TaanabPlayer extends Player
 		$p = parent::rockChoice();
 		$my_move = $this->result->getLastChoiceFor($this->mySide);
 		$his_move =  $this->result->getLastChoiceFor($this->opponentSide);
-		if ($his_move == $c)
+		$scores =  $this->result->getStatsFor($this->opponentSide);
+		$fScore = $scores['paper'];
+		$cScore = $scores['scissors'];
+		$pScore = $scores['rock'];
+		$maxi = max($pScore,$cScore,$fScore);
+		$mini = min($pScore,$cScore,$fScore);
+		
+		if($fScore == $maxi)
 		{
-			$rand = rand(0, 1);
-			if ($rand)
-			{
-				return $f;
-			}else{
-				return $c;
-			}
-		}else if ($his_move == $p){
-
-			$rand = rand(0, 1);
-			if ($rand)
-			{
-				return $f;
-			}
-			return $p;
-		} else if ($his_move == $f){
-
-			$rand = rand(0, 1);
-			if ($rand)
-			{
-				return $c;
-			}
+			return $c;
+		}
+		if ($pScore == $maxi)
+		{
 			return $f;
+		}
+		if ($cScore == $maxi)
+		{
+			return $p;
 		}
 		return $p;
 	}
