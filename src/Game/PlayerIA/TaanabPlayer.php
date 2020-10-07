@@ -38,10 +38,8 @@ class TaanabPlayer extends Player
 			
 
 		$maxi = max($pScore,$cScore,$fScore);
-		$mini = min($pScore,$cScore,$fScore);
 		
 		$mmaxi = max($mpScore,$mcScore,$mfScore);
-		$mmini = min($mpScore,$mcScore,$mfScore);
 
 		if($fScore == $maxi)
 		{
