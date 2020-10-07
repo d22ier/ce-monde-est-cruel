@@ -21,17 +21,33 @@ class TaanabPlayer extends Player
 		$c =  parent::scissorsChoice();
 		$f =  parent::paperChoice();
 		$p = parent::rockChoice();
-		for ($i = 1; $i < $turn; $i++) {
-			$my_move = $this->result->getLastChoiceFor($this->mySide);
-			$his_move =  $this->result->getLastChoiceFor($this->opponentSide);
-			if ($his_move == $c)
+		$my_move = $this->result->getLastChoiceFor($this->mySide);
+		$his_move =  $this->result->getLastChoiceFor($this->opponentSide);
+		if ($his_move == $c)
+		{
+			$rand = rand(0, 1);
+			if ($rand)
 			{
 				return $f;
-			}else if ($his_move == $p){
-				return $f;
-			} else if ($his_move == $f){
+			}else{
 				return $c;
 			}
+		}else if ($his_move == $p){
+
+			$rand = rand(0, 1);
+			if ($rand)
+			{
+				return $f;
+			}
+			return $p;
+		} else if ($his_move == $f){
+
+			$rand = rand(0, 1);
+			if ($rand)
+			{
+				return $c;
+			}
+			return $f;
 		}
 		return $p;
 	}
